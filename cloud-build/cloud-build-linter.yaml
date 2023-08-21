@@ -1,0 +1,18 @@
+steps:
+    # Run the Pre-Commit Checks from .pre-commit-config.yaml file
+  - name: 'python:3.8'
+    id: Run Pre-Commit Checks
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        pip install --upgrade identify
+        pip install --upgrade pre-commit
+        pre-commit run --config cloud-build/.pre-commit-config.yaml --all-files
+
+ - name: gcr.io/cloud-builders/gcloud
+   id: Run Scalafmt Lint
+   entrypoint: bash
+   args:
+     - '-c'
+     - |

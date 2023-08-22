@@ -16,3 +16,13 @@ steps:
    args:
      - '-c'
      - |
+       apt update -y && apt upgrade -y && apt install -y curl wget unzip openjdk-17-jdk
+       java --version
+       curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" && chmod +x cs && ./cs
+       sudo mv cs /usr/local/bin/
+       echo "export " | tee .bashrc
+       ./cs install scalafmt
+       scalafmt --version
+       scalafmt --test
+       
+        

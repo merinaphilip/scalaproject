@@ -20,8 +20,9 @@ steps:
        java --version
        curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" && chmod +x cs && ./cs
        sudo mv cs /usr/local/bin/
-       echo "export " | tee .bashrc
-       ./cs install scalafmt
+       cs install scalafmt
+       echo "\"export PATH="$PATH:/home/merinphilip12/.local/share/coursier/bin"\" | tee -a .bashrc
+       #close and open the terminal to update .bashrc
        scalafmt --version
        scalafmt --test
        

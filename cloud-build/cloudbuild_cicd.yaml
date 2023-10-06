@@ -7,7 +7,11 @@ steps:
 
   - name: 'node:14'
     entrypoint: 'npm'
-    args: ['run', 'test:coverage']
+    args:
+      - '-c'
+      - |
+        npm run test:verbose
+        npm run coverage    
     id: 'create coverage report'
 
   # - name: 'gcr.io/cloud-builders/docker'

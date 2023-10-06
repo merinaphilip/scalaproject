@@ -3,16 +3,14 @@
   "version": "1.0.0",
   "description": "Your project description",
   "scripts": {
-    "test": "jest",                # Run Jest tests
-    "test:coverage": "jest --coverage", #Run Jest tests with coverage
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "coverage": "jest --coverage --coverageReporters=text-lcov | nyc report --reporter=text-lcov"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.8",     # TypeScript typings for Jest
-    "jest": "^28.1.3",             # Jest test framework
-    "ts-jest": "^28.0.8",          # TypeScript preprocessor for Jest
-    "ts-node": "^10.0.0",          #TypeScript execution environment
-    #"nyc": "^15.1.0"               # Istanbul code coverage tool
-    #Add any other dev dependencies your project needs
+    "@types/jest": "^28.1.8",
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.8",
+    "ts-node": "^10.0.0"
   }
 }

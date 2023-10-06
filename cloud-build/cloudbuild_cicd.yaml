@@ -1,14 +1,15 @@
 # cicd pipeline
 steps:
-  - name: 'gcr.io/cloud-builders/npm'
-    entrypoint: 'node'
-    args:
-      - '-c'
-      - |
-        npm install --save-dev jest typescript ts-jest @types/jest --config=jest.config.json
-        jest --coverage
-        ls -lrth
-    id: 'run unit tests'
+  - name: 'node:14'
+    entrypoint: 'npm'
+    args: ['install']
+    id: 'install'
+
+  - name: 'node:14'
+    entrypoint: 'npm'
+    args: ['run', 'test:coverage']
+    id: 'create coverage report'
+
   # - name: 'gcr.io/cloud-builders/docker'
   #   entrypoint: 'bash'
   #   args:

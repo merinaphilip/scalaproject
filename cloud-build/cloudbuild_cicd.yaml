@@ -1,18 +1,16 @@
 # cicd pipeline
 steps:
   - name: 'gcr.io/cloud-builders/npm'
-    entrypoint: 'npm'
-    args: ['install']
-    id: 'install'
-
-  - name: 'gcr.io/cloud-builders/npm'
-    entrypoint: 'npm'
+    entrypoint: 'bash'    
     args:
-      - ['-v']
-      - ['install --save-dev jest ts-jest']
-      - ['run test:verbose']
-      - ['test -- --coverage']
-    id: 'create coverage report'
+      - '-c'
+      - |
+        node -v &&
+        npm -v &&
+        npm install --save-dev jest ts-jest &&
+        npm run test:verbose &&
+        npm test -- --coverage
+    id: 'run unit tests'
 
   # - name: 'gcr.io/cloud-builders/docker'
   #   entrypoint: 'bash'

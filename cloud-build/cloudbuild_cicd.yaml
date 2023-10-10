@@ -7,7 +7,7 @@ steps:
       - |
         node -v
         npm -v
-        #npm install --save-dev jest ts-jest
+        npm install -g jest
         npm run test:verbose
         npm test -- --coverage
     id: 'run unit tests'

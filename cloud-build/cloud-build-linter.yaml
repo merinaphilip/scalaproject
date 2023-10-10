@@ -1,0 +1,29 @@
+steps:
+    # Run the Pre-Commit Checks from .pre-commit-config.yaml file
+  - name: 'python:3.8'
+    id: Run Pre-Commit Checks
+    entrypoint: bash
+    args:
+      - '-c'
+      - |
+        pip install --upgrade identify
+        pip install --upgrade pre-commit
+        pre-commit run --config cloud-build/.pre-commit-config.yaml --all-files
+
+ - name: gcr.io/cloud-builders/gcloud
+   id: Run Scalafmt Lint
+   entrypoint: bash
+   args:
+     - '-c'
+     - |
+       apt update -y && apt upgrade -y && apt install -y curl wget unzip openjdk-17-jdk
+       java --version
+       curl -fLo cs https://git.io/coursier-cli-"$(uname | tr LD ld)" && chmod +x cs && ./cs
+       sudo mv cs /usr/local/bin/
+       cs install scalafmt
+       echo "\"export PATH="$PATH:/home/merinphilip12/.local/share/coursier/bin"\" | tee -a .bashrc
+       #close and open the terminal to update .bashrc
+       scalafmt --version
+       scalafmt --test
+       
+        

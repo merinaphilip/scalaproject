@@ -1,0 +1,20 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+    -   id: check-added-large-files
+        args: ['--maxkb=10240']
+    -   id: check-ast
+    -   id: check-executables-have-shebangs
+    -   id: check-json
+    -   id: check-yaml
+    -   id: check-xml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+- repo: https://github.com/PyCQA/pylint
+  rev: v2.17.4
+  hooks:
+    - id: pylint
+      stages: [commit]
+      types: [python]
+      language_version: python3

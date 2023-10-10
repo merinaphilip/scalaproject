@@ -8,10 +8,10 @@ steps:
   - name: 'node:14'
     entrypoint: 'npm'
     args:
-      - '-c'
-      - |
-        npm run test:verbose
-        npm run coverage    
+      - ['-v']
+      - ['install --save-dev jest ts-jest']
+      - ['run test:verbose']
+      - ['test -- --coverage']
     id: 'create coverage report'
 
   # - name: 'gcr.io/cloud-builders/docker'

@@ -8,6 +8,7 @@ steps:
         node -v
         npm -v
         npm install -g jest
+        npm install axios --save
         npm run test:verbose
         npm test -- --coverage
     id: 'run unit tests'

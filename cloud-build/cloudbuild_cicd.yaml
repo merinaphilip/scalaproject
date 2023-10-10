@@ -1,11 +1,11 @@
 # cicd pipeline
 steps:
-  - name: 'node:14'
+  - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'npm'
     args: ['install']
     id: 'install'
 
-  - name: 'node:14'
+  - name: 'gcr.io/cloud-builders/npm'
     entrypoint: 'npm'
     args:
       - ['-v']
